@@ -15,8 +15,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/fraunces-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="img/retrato.webp" media="(min-width: 761px)">
-<link rel="preload" as="image" href="img/retrato-m.webp" media="(max-width: 760px)">
+<link rel="preload" as="image" href="img/loja/h/cluster-5-navetes.webp">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -24,8 +23,8 @@
 <header class="nav">
   <nav class="nav-in" aria-label="Principal">
     <div class="nav-l">
-      <a href="#perfuracoes">Perfurações</a>
       <a href="#joias">Joias</a>
+      <a href="#perfuracoes">Perfurações</a>
       <a href="#sobre">Sobre</a>
     </div>
     <a class="marca" href="#inicio" aria-label="Mila, início">Mila</a>
@@ -39,50 +38,56 @@
 
 <main>
 
-<!-- HERO: retrato com os rótulos dela, desenhados -->
+<!-- HERO: vitrine detalhada dos destaques (Nuvemshop) -->
 <section class="hero" id="inicio">
-  <p class="gigante" aria-hidden="true">MILA</p>
-  <div class="palco">
-    <figure class="quadro">
-      <picture>
-        <source media="(max-width: 760px)" srcset="img/retrato-m.webp">
-        <img src="img/retrato.webp" alt="Mila, body piercer, de blazer cinza segurando a pinça de perfuração" width="1040" height="1400">
-      </picture>
-    </figure>
-    <svg class="fios" aria-hidden="true"><path/><path/><path/><path/><circle r="3.5"/><circle r="3.5"/><circle r="3.5"/><circle r="3.5"/></svg>
-    <p class="rot r1" data-alvo=".555,.385">Cada anatomia<br>é única</p>
-    <p class="rot r2" data-alvo=".24,.50">Safe piercer:<br>tudo estéril</p>
-    <p class="rot r3" data-alvo=".80,.29">Piercer<br>desde 2021</p>
-    <p class="rot r4" data-alvo=".735,.36">Titânio ASTM F136<br>e ouro 14K e 18K</p>
+  <div class="h-cab">
+    <h1><span class="sr">Mila, body piercer em Piracicaba: </span>Joias em titânio e ouro para o seu piercing</h1>
+    <p class="sync"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8a6 6 0 0 1 10.2-4.2M14 8a6 6 0 0 1-10.2 4.2M12.5 1.5v2.8H9.7M3.5 14.5v-2.8h2.8"/></svg> Loja da Mila na Nuvemshop: estoque em tempo real</p>
   </div>
-  <div class="hero-txt">
-    <h1><span class="sr">Mila, </span>Body piercing em Piracicaba</h1>
-    <p class="sub">Perfurações seguras, joias em titânio e ouro.</p>
-    <div class="btns">
-      <a class="btn" href="#agendar">Agendar perfuração</a>
-      <a class="btn btn-l" href="#joias">Ver joias</a>
+  <div class="h-grid" data-h>
+    <div class="h-lista" role="tablist" aria-label="Joias em destaque" data-h-lista></div>
+    <div class="h-foto">
+      <figure class="h-quadro" data-h-quadro>
+        <img alt="" width="1080" height="1350" draggable="false" data-h-img>
+        <img alt="" width="1080" height="1350" draggable="false" data-h-img2 aria-hidden="true">
+        <span class="selo" hidden data-h-selo></span>
+      </figure>
+      <div class="h-vistas" data-h-vistas>
+        <button type="button" class="on" data-v="0">Joia inteira</button>
+        <button type="button" data-v="1">Detalhe</button>
+      </div>
+    </div>
+    <div class="h-info" aria-live="polite">
+      <p class="p-cat" data-h-cat></p>
+      <h2 class="h-nome" data-h-nome></h2>
+      <p class="p-preco" data-h-preco></p>
+      <p class="p-parc" data-h-parc></p>
+      <p class="h-attr" data-h-attr></p>
+      <div class="p-var" data-h-var></div>
+      <p class="p-est" data-h-est></p>
+      <div class="p-acao">
+        <div class="qtd"><button type="button" aria-label="Menos" data-hq="-1">−</button><span data-h-q>1</span><button type="button" aria-label="Mais" data-hq="1">+</button></div>
+        <button class="btn" type="button" data-h-add>Adicionar à sacola</button>
+      </div>
+      <a class="p-avise" hidden data-h-avise target="_blank" rel="noopener">Avise-me quando voltar</a>
+      <dl class="ficha" data-h-ficha></dl>
     </div>
   </div>
 </section>
 
-<!-- SOBRE -->
-<section class="sec sobre" id="sobre">
-  <img class="orn orn-hl" src="img/orn/navetes.webp" alt="" aria-hidden="true">
-  <img class="orn orn-hr" src="img/orn/navetes.webp" alt="" aria-hidden="true">
-  <div class="sobre-in">
-    <figure class="sobre-foto rev"><img src="img/sobre.webp" alt="Mila sentada no estúdio, de blazer cinza" width="960" height="1200"></figure>
-    <div class="sobre-txt rev">
-      <h2>A única constante é a mudança</h2>
-      <p>Oi, eu sou a Mila. Sou body piercer desde 2021 e, desde que escolhi essa profissão, me dedico a estudar, evoluir e oferecer uma experiência segura, acolhedora e personalizada para cada pessoa que passa pelo meu estúdio.</p>
-      <p>Se adornar vai muito além de colocar uma joia: é marcar fases, expressar personalidade, resgatar autoestima e celebrar transformações. Fazer parte desses momentos é o que eu mais amo no meu trabalho.</p>
-      <ul class="fatos">
-        <li><b>Desde 2021</b> perfurando, com estúdio próprio em Piracicaba</li>
-        <li><b>Titânio ASTM F136</b> e ouro 14K e 18K com certificação Amagold</li>
-        <li><b>Formação contínua</b>: 5ª Conferência APPBR e 6º Meeting de piercers</li>
-        <li><b>Horário marcado</b>: atendimento só com agendamento</li>
-      </ul>
-    </div>
+<!-- LOJA (Nuvemshop) -->
+<section class="sec loja" id="joias">
+  <img class="orn orn-bl" src="img/orn/borboleta.webp" alt="" aria-hidden="true">
+  <img class="orn orn-br" src="img/orn/borboleta.webp" alt="" aria-hidden="true">
+  <div class="cab rev">
+    <h2>Todas as joias</h2>
+    <p class="lead">Titânio ASTM F136 e ouro 14K e 18K, com garantia vitalícia do fabricante. Para trocar a joia de uma perfuração cicatrizada: escolha, pague e retire no estúdio ou receba em casa.</p>
+    <p class="sync"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8a6 6 0 0 1 10.2-4.2M14 8a6 6 0 0 1-10.2 4.2M12.5 1.5v2.8H9.7M3.5 14.5v-2.8h2.8"/></svg> Preços e estoque sincronizados com a Nuvemshop</p>
   </div>
+  <div class="filtros rev" aria-label="Filtrar joias" data-cats></div>
+  <div class="vitrine" data-vitrine></div>
+  <div class="mais-w"><button type="button" class="btn btn-l" data-vmais>Ver todas</button></div>
+  <p class="demo">Prévia: vitrine de demonstração com as joias do seu perfil. Preços e estoque ilustrativos até ligar a sua Nuvemshop.</p>
 </section>
 
 <!-- PERFURAÇÕES -->
@@ -101,21 +106,6 @@
   </div>
   <div class="grade" data-grade></div>
   <div class="mais-w"><button type="button" class="btn btn-l" data-mais>Ver mais</button></div>
-</section>
-
-<!-- LOJA (Nuvemshop) -->
-<section class="sec loja" id="joias">
-  <img class="orn orn-bl" src="img/orn/borboleta.webp" alt="" aria-hidden="true">
-  <img class="orn orn-br" src="img/orn/borboleta.webp" alt="" aria-hidden="true">
-  <div class="cab rev">
-    <h2>Joias</h2>
-    <p class="lead">Titânio ASTM F136 e ouro 14K e 18K, com garantia vitalícia do fabricante. Para trocar a joia de uma perfuração cicatrizada: escolha, pague e retire no estúdio ou receba em casa.</p>
-    <p class="sync"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8a6 6 0 0 1 10.2-4.2M14 8a6 6 0 0 1-10.2 4.2M12.5 1.5v2.8H9.7M3.5 14.5v-2.8h2.8"/></svg> Preços e estoque sincronizados com a Nuvemshop</p>
-  </div>
-  <div class="filtros rev" aria-label="Filtrar joias" data-cats></div>
-  <div class="vitrine" data-vitrine></div>
-  <div class="mais-w"><button type="button" class="btn btn-l" data-vmais>Ver todas</button></div>
-  <p class="demo">Prévia: vitrine de demonstração com as joias do seu perfil. Preços e estoque ilustrativos até ligar a sua Nuvemshop.</p>
 </section>
 
 <!-- BIOSSEGURANÇA -->
@@ -146,6 +136,26 @@
       <p class="txt">Depois do inchaço inicial, a haste é ajustada: menos atrito, menos risco de migração e a joia bem encaixada. Seu piercing evolui junto com a cicatrização.</p>
       <p class="cur">Ajuste da haste após o inchaço.</p>
     </article>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sec sobre" id="sobre">
+  <img class="orn orn-hl" src="img/orn/navetes.webp" alt="" aria-hidden="true">
+  <img class="orn orn-hr" src="img/orn/navetes.webp" alt="" aria-hidden="true">
+  <div class="sobre-in">
+    <figure class="sobre-foto rev"><img src="img/sobre.webp" alt="Mila sentada no estúdio, de blazer cinza" width="960" height="1200"></figure>
+    <div class="sobre-txt rev">
+      <h2>A única constante é a mudança</h2>
+      <p>Oi, eu sou a Mila. Sou body piercer desde 2021 e, desde que escolhi essa profissão, me dedico a estudar, evoluir e oferecer uma experiência segura, acolhedora e personalizada para cada pessoa que passa pelo meu estúdio.</p>
+      <p>Se adornar vai muito além de colocar uma joia: é marcar fases, expressar personalidade, resgatar autoestima e celebrar transformações. Fazer parte desses momentos é o que eu mais amo no meu trabalho.</p>
+      <ul class="fatos">
+        <li><b>Desde 2021</b> perfurando, com estúdio próprio em Piracicaba</li>
+        <li><b>Titânio ASTM F136</b> e ouro 14K e 18K com certificação Amagold</li>
+        <li><b>Formação contínua</b>: 5ª Conferência APPBR e 6º Meeting de piercers</li>
+        <li><b>Horário marcado</b>: atendimento só com agendamento</li>
+      </ul>
+    </div>
   </div>
 </section>
 
