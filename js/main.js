@@ -88,9 +88,9 @@
   vitrine();
 
   /* produto */
-  var md = $('[data-prod]'), pv = null, pp = null, pq = 1;
+  var md = $('[data-prod]'), pv = null, pp = null;
   function abreProd(p) {
-    pp = p; pq = 1; $('[data-p-q]').textContent = 1;
+    pp = p;
     $('[data-p-img]').src = p.images[0].src; $('[data-p-img]').alt = p.name.pt;
     $('[data-p-nome]').textContent = p.name.pt;
     $('[data-p-cat]').textContent = NS.categories.filter(function (c) { return c.id === p.categories[0]; })[0].name.pt;
@@ -111,96 +111,27 @@
     $('[data-p-preco]').textContent = brl(v.price);
     $('[data-p-parc]').textContent = parc + 'x de ' + brl(v.price / parc) + ' sem juros ou Pix';
     var add = $('[data-add]'), av = $('[data-avise]'), est = $('[data-p-est]');
+    add.href = NS.store.url ? NS.store.url + '/produtos/' + pp.handle.pt + '/?variant=' + v.id : '#';
     if (!v.stock) {
-      add.disabled = true; add.textContent = 'Sem estoque'; est.textContent = 'Esgotada no momento.';
+      add.classList.add('off'); add.setAttribute('aria-disabled', 'true'); add.textContent = 'Sem estoque'; est.textContent = 'Esgotada no momento.';
       av.hidden = false; av.href = wa('Oi, Mila! Quero ser avisada quando a joia ' + pp.name.pt + ' voltar ao estoque.');
     } else {
-      add.disabled = false; add.textContent = 'Adicionar à sacola'; av.hidden = true;
+      add.classList.remove('off'); add.removeAttribute('aria-disabled'); add.textContent = 'Comprar na loja'; av.hidden = true;
       est.textContent = /encomenda/.test(v.values[0].pt) ? 'Sob encomenda: prazo confirmado no pedido.' : (v.stock === 1 ? 'Última unidade.' : v.stock <= 2 ? 'Últimas ' + v.stock + ' unidades.' : 'Pronta entrega.');
     }
   }
-  $$('[data-q]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var max = pv && !/encomenda/.test(pv.values[0].pt) ? pv.stock : 9;
-      pq = Math.max(1, Math.min(max || 1, pq + +b.getAttribute('data-q'))); $('[data-p-q]').textContent = pq;
-    });
-  });
   $$('.modal').forEach(function (m) {
     m.addEventListener('click', function (e) { if (e.target === m || e.target.hasAttribute('data-fecha')) { m.hidden = true; document.body.classList.remove('trava'); } });
   });
 
-  /* sacola */
-  var sac = $('[data-sacola]'), itens = [];
-  try { itens = JSON.parse(localStorage.getItem('mila-sacola') || '[]'); } catch (e) { itens = []; }
-  var frete = null;
-  function acha(vid) { for (var i = 0; i < NS.products.length; i++) for (var j = 0; j < NS.products[i].variants.length; j++) if (NS.products[i].variants[j].id === vid) return [NS.products[i], NS.products[i].variants[j]]; }
-  function salva() { try { localStorage.setItem('mila-sacola', JSON.stringify(itens)); } catch (e) {} }
-  function sub() { return itens.reduce(function (s, it) { return s + acha(it.v)[1].price * it.q; }, 0); }
-  function desenha() {
-    var n = itens.reduce(function (s, it) { return s + it.q; }, 0);
-    $('[data-conta]').textContent = n;
-    var box = $('[data-itens]'); box.innerHTML = '';
-    itens.forEach(function (it, i) {
-      var pv2 = acha(it.v), p = pv2[0], v = pv2[1];
-      var d = document.createElement('div'); d.className = 's-item';
-      d.innerHTML = '<img src="' + p.images[0].src + '" alt="" width="64" height="80"><div><p class="s-n">' + p.name.pt + '</p><p class="s-v">' + v.values[0].pt + '</p>' +
-        '<div class="qtd"><button type="button" aria-label="Menos">−</button><span>' + it.q + '</span><button type="button" aria-label="Mais">+</button></div></div>' +
-        '<div class="s-dir"><p>' + brl(v.price * it.q) + '</p><button type="button" class="s-rm">Remover</button></div>';
-      var bs = $$('button', d);
-      bs[0].addEventListener('click', function () { if (it.q > 1) { it.q--; atualiza(); } });
-      bs[1].addEventListener('click', function () { var mx = /encomenda/.test(v.values[0].pt) ? 9 : v.stock; if (it.q < mx) { it.q++; atualiza(); } });
-      bs[2].addEventListener('click', function () { itens.splice(i, 1); atualiza(); });
-      box.appendChild(d);
-    });
-    $('[data-vazia]').hidden = itens.length > 0; $('[data-fim]').hidden = itens.length === 0;
-    var s = sub(); $('[data-sub]').textContent = brl(s + (frete ? frete.v : 0));
-    if (frete) $('[data-sub]').previousElementSibling.textContent = 'Total com frete'; else $('[data-sub]').previousElementSibling.textContent = 'Subtotal';
-  }
-  function atualiza() { salva(); desenha(); if ($('[data-fretes]').children.length) calc(); }
-  function abreSac() { desenha(); sac.hidden = false; document.body.classList.add('trava'); }
-  function fechaSac() { sac.hidden = true; document.body.classList.remove('trava'); }
-  $$('[data-abre-sacola]').forEach(function (b) { b.addEventListener('click', abreSac); });
-  $$('[data-fecha-s]').forEach(function (b) { b.addEventListener('click', fechaSac); });
-  sac.addEventListener('click', function (e) { if (e.target === sac) fechaSac(); });
-  function poe(vid, q) {
-    var ja = itens.filter(function (it) { return it.v === vid; })[0];
-    if (ja) ja.q += q; else itens.push({ v: vid, q: q });
-    salva();
-  }
-  $('[data-add]').addEventListener('click', function () { poe(pv.id, pq); md.hidden = true; abreSac(); });
-
-  /* frete (simulação do Nuvem Envio) */
-  var cep = $('[data-cep]');
-  cep.addEventListener('input', function () { var d = cep.value.replace(/\D/g, '').slice(0, 8); cep.value = d.length > 5 ? d.slice(0, 5) + '-' + d.slice(5) : d; });
-  function calc() {
-    var d = cep.value.replace(/\D/g, ''), box = $('[data-fretes]');
-    if (d.length !== 8) { box.innerHTML = '<p class="f-erro">Digite um CEP com 8 números.</p>'; return; }
-    var reg = +d.slice(0, 2), perto = reg === 13, sp = reg <= 19;
-    var ops = [
-      { n: 'Nuvem Envio PAC', p: perto ? '2 a 4 dias úteis' : (sp ? '3 a 6 dias úteis' : '6 a 10 dias úteis'), v: perto ? 14.9 : (sp ? 18.9 : 27.9) },
-      { n: 'Nuvem Envio Sedex', p: perto ? '1 a 2 dias úteis' : (sp ? '1 a 3 dias úteis' : '3 a 5 dias úteis'), v: perto ? 19.9 : (sp ? 24.9 : 39.9) }
-    ];
-    if (perto) ops.unshift({ n: 'Retirar no estúdio', p: 'Piracicaba, com horário combinado', v: 0 });
-    box.innerHTML = '';
-    ops.forEach(function (o, i) {
-      var l = document.createElement('label'); l.className = 'frete';
-      l.innerHTML = '<input type="radio" name="frete"' + (frete && frete.n === o.n ? ' checked' : '') + '><span><b>' + o.n + '</b><i>' + o.p + '</i></span><em>' + (o.v ? brl(o.v) : 'Grátis') + '</em>';
-      $('input', l).addEventListener('change', function () { frete = o; desenha(); });
-      box.appendChild(l);
-    });
-  }
-  $('[data-calc]').addEventListener('click', calc);
-  cep.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); calc(); } });
-
-  /* checkout (simulação) */
-  $('[data-checkout]').addEventListener('click', function () {
-    var r = itens.map(function (it) { var a = acha(it.v); return '<p><span>' + it.q + '× ' + a[0].name.pt + ' (' + a[1].values[0].pt + ')</span><b>' + brl(a[1].price * it.q) + '</b></p>'; }).join('');
-    if (frete) r += '<p><span>' + frete.n + '</span><b>' + (frete.v ? brl(frete.v) : 'Grátis') + '</b></p>';
-    r += '<p class="tot"><span>Total</span><b>' + brl(sub() + (frete ? frete.v : 0)) + '</b></p>';
-    $('[data-ck-resumo]').innerHTML = r;
-    sac.hidden = true; $('[data-ck]').hidden = false;
+  /* comprar: abre a joia na loja da Nuvemshop (na prévia, sem loja ligada, mostra o aviso) */
+  $('[data-add]').addEventListener('click', function (e) {
+    if (this.classList.contains('off')) { e.preventDefault(); return; }
+    if (NS.store.url) return;
+    e.preventDefault();
+    $('[data-ck-nome]').textContent = pp.name.pt + (pp.variants.length > 1 ? ' (' + pv.values[0].pt + ')' : '');
+    md.hidden = true; $('[data-ck]').hidden = false;
   });
-  desenha();
 
   /* ---------- hero: vitrine enxuta, joias passando rápido ---------- */
   var H = $('[data-h]'), hImg = $('[data-h-img]'), hImg2 = $('[data-h-img2]'), hPts = $('[data-h-pontos]');
@@ -252,7 +183,6 @@
     if (e.key !== 'Escape') return;
     if (!lb.hidden) fechaLb();
     $$('.modal').forEach(function (m) { m.hidden = true; });
-    if (!sac.hidden) fechaSac();
     document.body.classList.remove('trava');
   });
   addEventListener('keydown', function (e) {

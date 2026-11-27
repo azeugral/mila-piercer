@@ -32,7 +32,7 @@
     <div class="nav-r">
       <a href="#duvidas">Dúvidas</a>
       <a href="#agendar">Agendar</a>
-      <button class="sacola-btn" type="button" aria-label="Abrir sacola" data-abre-sacola>Sacola <span class="conta" data-conta>0</span></button>
+      <a href="#estudio">Estúdio</a>
     </div>
   </nav>
 </header>
@@ -49,7 +49,7 @@
         <a class="btn" href="#joias">Comprar na loja</a>
         <a class="btn btn-l" href="#agendar">Agendar perfuração</a>
       </div>
-      <p class="sync"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8a6 6 0 0 1 10.2-4.2M14 8a6 6 0 0 1-10.2 4.2M12.5 1.5v2.8H9.7M3.5 14.5v-2.8h2.8"/></svg> Loja na Nuvemshop: estoque em tempo real</p>
+      <p class="sync"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8a6 6 0 0 1 10.2-4.2M14 8a6 6 0 0 1-10.2 4.2M12.5 1.5v2.8H9.7M3.5 14.5v-2.8h2.8"/></svg> Catálogo e estoque direto da Nuvemshop</p>
     </div>
     <div class="h-foto">
       <figure class="h-quadro">
@@ -75,13 +75,13 @@
   <img class="orn orn-br" src="img/orn/borboleta.webp" alt="" aria-hidden="true">
   <div class="cab rev">
     <h2>Todas as joias</h2>
-    <p class="lead">Titânio ASTM F136 e ouro 14K e 18K, com garantia vitalícia do fabricante. Para trocar a joia de uma perfuração cicatrizada: escolha, pague e retire no estúdio ou receba em casa.</p>
-    <p class="sync"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8a6 6 0 0 1 10.2-4.2M14 8a6 6 0 0 1-10.2 4.2M12.5 1.5v2.8H9.7M3.5 14.5v-2.8h2.8"/></svg> Preços e estoque sincronizados com a Nuvemshop</p>
+    <p class="lead">Titânio ASTM F136 e ouro 14K e 18K, com garantia vitalícia do fabricante. Para trocar a joia de uma perfuração cicatrizada: escolha aqui e finalize a compra na loja da Mila na Nuvemshop.</p>
+    <p class="sync"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8a6 6 0 0 1 10.2-4.2M14 8a6 6 0 0 1-10.2 4.2M12.5 1.5v2.8H9.7M3.5 14.5v-2.8h2.8"/></svg> Catálogo, preços e estoque atualizados pela Nuvemshop</p>
   </div>
   <div class="filtros rev" aria-label="Filtrar joias" data-cats></div>
   <div class="vitrine" data-vitrine></div>
   <div class="mais-w"><button type="button" class="btn btn-l" data-vmais>Ver todas</button></div>
-  <p class="demo">Prévia: vitrine de demonstração com as joias do seu perfil. Preços e estoque ilustrativos até ligar a sua Nuvemshop.</p>
+  <p class="demo">Prévia: vitrine de demonstração com as joias do seu perfil. Preços e estoque ilustrativos até ligar a sua loja da Nuvemshop.</p>
 </section>
 
 <!-- PERFURAÇÕES -->
@@ -257,44 +257,26 @@
       <div class="p-var" data-p-var></div>
       <p class="p-est" data-p-est></p>
       <div class="p-acao">
-        <div class="qtd"><button type="button" aria-label="Menos" data-q="-1">−</button><span data-p-q>1</span><button type="button" aria-label="Mais" data-q="1">+</button></div>
-        <button class="btn" type="button" data-add>Adicionar à sacola</button>
+        <a class="btn" href="#" target="_blank" rel="noopener" data-add>Comprar na loja</a>
       </div>
       <a class="p-avise" hidden data-avise target="_blank" rel="noopener">Avise-me quando voltar</a>
       <p class="p-desc" data-p-desc></p>
       <ul class="p-lista">
         <li>Para perfurações cicatrizadas. Perfuração nova: a joia é escolhida no atendimento.</li>
-        <li>Retire no estúdio ou receba pelo Nuvem Envio.</li>
-        <li>Pagamento no checkout seguro da Nuvemshop: Pix, cartão ou boleto.</li>
+        <li>A compra abre na loja da Mila na Nuvemshop, já nesta opção.</li>
+        <li>Lá você calcula o frete e paga com Pix, cartão ou boleto.</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- sacola -->
-<aside class="sacola" hidden data-sacola aria-label="Sacola">
-  <div class="s-in">
-    <div class="s-top"><h3>Sacola</h3><button class="m-x" type="button" aria-label="Fechar sacola" data-fecha-s>Fechar</button></div>
-    <div class="s-itens" data-itens></div>
-    <div class="s-vazia" data-vazia><p>A sacola está vazia.</p><a class="btn btn-l" href="#joias" data-fecha-s>Ver joias</a></div>
-    <div class="s-fim" data-fim>
-      <label class="cep"><span>Calcular frete</span><span class="cep-l"><input inputmode="numeric" maxlength="9" placeholder="00000-000" data-cep><button type="button" class="btn btn-l" data-calc>Calcular</button></span></label>
-      <div class="fretes" data-fretes></div>
-      <p class="s-sub"><span>Subtotal</span><b data-sub>R$ 0,00</b></p>
-      <button class="btn s-ir" type="button" data-checkout>Finalizar compra</button>
-      <p class="s-nota">Checkout seguro da Nuvemshop</p>
-    </div>
-  </div>
-</aside>
-
-<!-- checkout (simulação) -->
+<!-- aviso da prévia: no site publicado o botão abre a joia na Nuvemshop -->
 <div class="modal" hidden data-ck>
   <div class="modal-in ck" role="dialog" aria-modal="true" aria-labelledby="ck-t">
     <button class="m-x" type="button" aria-label="Fechar" data-fecha>Fechar</button>
-    <h3 id="ck-t">Checkout da Nuvemshop</h3>
-    <p>No site publicado, este botão leva a sacola direto para o checkout seguro da sua loja na Nuvemshop: Pix, cartão e boleto, com o frete do Nuvem Envio e a baixa automática no estoque.</p>
-    <div class="ck-resumo" data-ck-resumo></div>
-    <p class="ck-nota">Prévia de demonstração: nenhum pedido é criado.</p>
+    <h3 id="ck-t">Compra na Nuvemshop</h3>
+    <p>No site publicado, este botão abre <b data-ck-nome></b> na sua loja da Nuvemshop, já na opção escolhida. Lá a cliente calcula o frete e paga com Pix, cartão ou boleto.</p>
+    <p class="ck-nota">Prévia de demonstração: a loja ainda não está ligada.</p>
     <button class="btn" type="button" data-fecha>Entendi</button>
   </div>
 </div>

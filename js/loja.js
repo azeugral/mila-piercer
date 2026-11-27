@@ -1,12 +1,14 @@
 /*
   Catálogo no formato da API da Nuvemshop (GET /v1/{store_id}/products).
   Na prévia os dados estão fixos aqui (simulação). No site publicado, este
-  arquivo é gerado pela sincronização do LRGZ Hub com a loja dela: preço,
-  estoque e fotos vêm da Nuvemshop, e o checkout acontece lá.
+  arquivo é gerado pela sincronização com a loja dela (só leitura): catálogo,
+  preços, estoque e disponibilidade vêm da Nuvemshop. A compra NÃO acontece
+  aqui: "Comprar na loja" abre a joia na loja dela (store.url), onde ficam
+  sacola, frete e pagamento.
   Preços e estoque abaixo são ILUSTRATIVOS (CONFIRMAR com a Mila).
 */
 window.NUVEMSHOP = {
-  store: { id: 'demo', name: 'Mila Piercer', installments: 4 },
+  store: { id: 'demo', name: 'Mila Piercer', installments: 4, url: '' }, // url = endereço da loja (ex.: https://loja.milapiercer.com.br)
   // destaques do hero = produtos com a tag "destaque" na Nuvemshop, na ordem abaixo
   featured: ['cluster-5-navetes', 'argola-conch-gold', 'umbigo-pendente-verde', 'cluster-4-navetes', 'lotus-14k', 'argola-turmalina', 'cluster-trinity-gota', 'borboleta-14k', 'cluster-13-zirconias', 'umbigo-navete', 'ponto-luz-3-garras-14k', 'cluster-bolinha'],
   categories: [
