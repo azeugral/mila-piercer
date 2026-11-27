@@ -16,6 +16,7 @@
 <link rel="preload" href="fonts/fraunces-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/loja/h/cluster-5-navetes.webp">
+<link rel="preload" as="image" href="img/loja/h/argola-conch-gold.webp">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -38,42 +39,32 @@
 
 <main>
 
-<!-- HERO: vitrine detalhada dos destaques (Nuvemshop) -->
+<!-- HERO: vitrine enxuta, joias passando rápido + CTA da loja -->
 <section class="hero" id="inicio">
   <div class="h-grid" data-h>
     <div class="h-esq">
-      <div class="h-cab">
-        <h1><span class="sr">Mila, body piercer em Piracicaba: </span>Joias em titânio e ouro para o seu piercing</h1>
-        <p class="sync"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8a6 6 0 0 1 10.2-4.2M14 8a6 6 0 0 1-10.2 4.2M12.5 1.5v2.8H9.7M3.5 14.5v-2.8h2.8"/></svg> Loja da Mila na Nuvemshop: estoque em tempo real</p>
+      <h1><span class="sr">Mila, body piercer em Piracicaba: </span>Joias em titânio e ouro para o seu piercing</h1>
+      <p class="h-sub">Pronta entrega, com retirada no estúdio em Piracicaba ou envio para todo o Brasil.</p>
+      <div class="h-ctas">
+        <a class="btn" href="#joias">Comprar na loja</a>
+        <a class="btn btn-l" href="#agendar">Agendar perfuração</a>
       </div>
-      <div class="h-lista" role="tablist" aria-label="Joias em destaque" data-h-lista></div>
-      <a class="h-todas" href="#joias" data-h-todas>Ver todas as joias</a>
+      <p class="sync"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8a6 6 0 0 1 10.2-4.2M14 8a6 6 0 0 1-10.2 4.2M12.5 1.5v2.8H9.7M3.5 14.5v-2.8h2.8"/></svg> Loja na Nuvemshop: estoque em tempo real</p>
     </div>
     <div class="h-foto">
-      <figure class="h-quadro" data-h-quadro>
+      <figure class="h-quadro">
         <img alt="" width="1080" height="1350" draggable="false" data-h-img>
         <img alt="" width="1080" height="1350" draggable="false" data-h-img2 aria-hidden="true">
-        <span class="selo" hidden data-h-selo></span>
       </figure>
-      <div class="h-vistas" data-h-vistas>
-        <button type="button" class="on" data-v="0">Joia inteira</button>
-        <button type="button" data-v="1">Detalhe</button>
-      </div>
+      <div class="h-pontos" role="tablist" aria-label="Joias em destaque" data-h-pontos></div>
     </div>
     <div class="h-info" aria-live="polite">
       <p class="p-cat" data-h-cat></p>
       <h2 class="h-nome" data-h-nome></h2>
       <p class="p-preco" data-h-preco></p>
       <p class="p-parc" data-h-parc></p>
-      <p class="h-attr" data-h-attr></p>
-      <div class="p-var" data-h-var></div>
-      <p class="p-est" data-h-est></p>
-      <div class="p-acao">
-        <div class="qtd"><button type="button" aria-label="Menos" data-hq="-1">−</button><span data-h-q>1</span><button type="button" aria-label="Mais" data-hq="1">+</button></div>
-        <button class="btn" type="button" data-h-add>Adicionar à sacola</button>
-      </div>
-      <a class="p-avise" hidden data-h-avise target="_blank" rel="noopener">Avise-me quando voltar</a>
-      <dl class="ficha" data-h-ficha></dl>
+      <button class="btn h-comprar" type="button" data-h-comprar>Comprar esta joia</button>
+      <a class="h-todas" href="#joias" data-h-todas>Ver todas as joias</a>
     </div>
   </div>
 </section>
@@ -142,41 +133,9 @@
   </div>
 </section>
 
-<!-- DÚVIDAS -->
-<section class="sec duvidas" id="duvidas">
-  <img class="orn orn-hl" src="img/orn/arco.webp" alt="" aria-hidden="true">
-  <img class="orn orn-hr" src="img/orn/arco.webp" alt="" aria-hidden="true">
-  <div class="cab rev"><h2>Dúvidas</h2></div>
-  <div class="faq rev">
-    <details><summary>Posso levar a minha joia?</summary><p>Não trabalho dessa forma. O procedimento envolve perfuração + joia, para garantir a qualidade e a segurança do resultado. Você escolhe a joia comigo, entre titânio e ouro.</p></details>
-    <details><summary>Dói? Você passa anestésico?</summary><p>A dor é bem momentânea, pode ficar tranquila. Não utilizo anestésico, pois não é indicado para esse tipo de procedimento e pode comprometer a biossegurança. Tudo é feito de forma estéril e segura.</p></details>
-    <details><summary>O que é o downsize e quando fazer?</summary><p>Na perfuração nova a haste é mais longa, para acompanhar o inchaço. Depois que ele passa, a haste é trocada por uma do tamanho certo: reduz atrito e irritação, diminui o risco de migração e melhora o encaixe da joia.</p></details>
-    <details><summary>Posso dormir em cima do piercing?</summary><p>Na cicatrização, não. Dormir em cima muda o ângulo da perfuração e diminui a circulação, e isso inflama. Para orelha, a almofada com furo no meio resolve.</p></details>
-    <details><summary>Posso limpar com álcool 70?</summary><p>Não. O álcool seca e danifica as células novas e atrasa a cicatrização. O melhor é o bom e velho sabão neutro e o soro fisiológico.</p></details>
-    <details><summary>Posso ir à praia com piercing novo?</summary><p>No período de cicatrização, não é indicado: areia, maresia, sol e água do mar prejudicam o furo. Por isso o inverno é a melhor época para colocar um piercing novo.</p></details>
-    <details><summary>Meu furo fechou. Preciso furar de novo?</summary><p>Nem todo piercing "fechado" realmente fechou. Às vezes o canal está só obstruído e dá para desobstruir com o instrumento certo, sem nova perfuração. Por isso a avaliação faz toda a diferença.</p></details>
-  </div>
-</section>
-
-<!-- ESTÚDIO -->
-<section class="sec estudio" id="estudio">
-  <img class="orn orn-c" src="img/orn/borboleta.webp" alt="" aria-hidden="true">
-  <div class="cab rev">
-    <h2>Estúdio</h2>
-    <p class="lead">Rua Governador Pedro de Toledo, 497, Sala 3<br>Piracicaba-SP, 13400-070</p>
-  </div>
-  <div class="mapa rev">
-    <iframe title="Mapa do estúdio" src="https://www.google.com/maps?q=Rua+Governador+Pedro+de+Toledo+497+Piracicaba+SP&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-  <div class="btns rev">
-    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Rua+Governador+Pedro+de+Toledo+497+Piracicaba+SP" target="_blank" rel="noopener">Como chegar</a>
-    <a class="btn btn-l" href="https://www.instagram.com/mila.piercerr/" target="_blank" rel="noopener">Instagram</a>
-  </div>
-</section>
-
 <!-- HISTÓRIA + AGENDAR -->
 <section class="hist" id="sobre">
-  <figure class="hist-foto"><img src="img/sobre.webp" alt="Mila sentada no estúdio, de blazer cinza" width="960" height="1200"></figure>
+  <figure class="hist-foto"><img src="img/historia.webp" alt="Mila, body piercer, de blazer cinza segurando a pinça de perfuração" width="1040" height="1300"></figure>
   <div class="hist-txt">
     <img class="orn orn-hist" src="img/orn/navetes.webp" alt="" aria-hidden="true">
     <div class="sobre-txt rev">
@@ -233,6 +192,38 @@
       <button class="btn" type="submit">Enviar pelo WhatsApp</button>
     </form>
     </div>
+  </div>
+</section>
+
+<!-- DÚVIDAS -->
+<section class="sec duvidas" id="duvidas">
+  <img class="orn orn-hl" src="img/orn/arco.webp" alt="" aria-hidden="true">
+  <img class="orn orn-hr" src="img/orn/arco.webp" alt="" aria-hidden="true">
+  <div class="cab rev"><h2>Dúvidas</h2></div>
+  <div class="faq rev">
+    <details><summary>Posso levar a minha joia?</summary><p>Não trabalho dessa forma. O procedimento envolve perfuração + joia, para garantir a qualidade e a segurança do resultado. Você escolhe a joia comigo, entre titânio e ouro.</p></details>
+    <details><summary>Dói? Você passa anestésico?</summary><p>A dor é bem momentânea, pode ficar tranquila. Não utilizo anestésico, pois não é indicado para esse tipo de procedimento e pode comprometer a biossegurança. Tudo é feito de forma estéril e segura.</p></details>
+    <details><summary>O que é o downsize e quando fazer?</summary><p>Na perfuração nova a haste é mais longa, para acompanhar o inchaço. Depois que ele passa, a haste é trocada por uma do tamanho certo: reduz atrito e irritação, diminui o risco de migração e melhora o encaixe da joia.</p></details>
+    <details><summary>Posso dormir em cima do piercing?</summary><p>Na cicatrização, não. Dormir em cima muda o ângulo da perfuração e diminui a circulação, e isso inflama. Para orelha, a almofada com furo no meio resolve.</p></details>
+    <details><summary>Posso limpar com álcool 70?</summary><p>Não. O álcool seca e danifica as células novas e atrasa a cicatrização. O melhor é o bom e velho sabão neutro e o soro fisiológico.</p></details>
+    <details><summary>Posso ir à praia com piercing novo?</summary><p>No período de cicatrização, não é indicado: areia, maresia, sol e água do mar prejudicam o furo. Por isso o inverno é a melhor época para colocar um piercing novo.</p></details>
+    <details><summary>Meu furo fechou. Preciso furar de novo?</summary><p>Nem todo piercing "fechado" realmente fechou. Às vezes o canal está só obstruído e dá para desobstruir com o instrumento certo, sem nova perfuração. Por isso a avaliação faz toda a diferença.</p></details>
+  </div>
+</section>
+
+<!-- ESTÚDIO -->
+<section class="sec estudio" id="estudio">
+  <img class="orn orn-c" src="img/orn/borboleta.webp" alt="" aria-hidden="true">
+  <div class="cab rev">
+    <h2>Estúdio</h2>
+    <p class="lead">Rua Governador Pedro de Toledo, 497, Sala 3<br>Piracicaba-SP, 13400-070</p>
+  </div>
+  <div class="mapa rev">
+    <iframe title="Mapa do estúdio" src="https://www.google.com/maps?q=Rua+Governador+Pedro+de+Toledo+497+Piracicaba+SP&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <div class="btns rev">
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Rua+Governador+Pedro+de+Toledo+497+Piracicaba+SP" target="_blank" rel="noopener">Como chegar</a>
+    <a class="btn btn-l" href="https://www.instagram.com/mila.piercerr/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </section>
 

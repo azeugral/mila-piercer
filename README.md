@@ -14,3 +14,8 @@ Prévia em https://azeugral.github.io/mila-piercer/ (noindex). Feita a partir do
 - Nome no site: "Mila", "Mila Piercer" ou "Mila Piercing".
 - Quais joias ficam em destaque no topo e o "Indicada para" de cada uma.
 - Uso das fotos de clientes (todas já publicadas no perfil dela).
+
+## v4 (27/11)
+- Hero enxuto: título + "Comprar na loja" / "Agendar perfuração" à esquerda, foto emoldurada no centro passando 12 joias a cada 2,4 s (pausa com o mouse em cima), nome + preço + "Comprar esta joia" (abre a joia) à direita.
+- História + agendamento logo acima de Dúvidas, com o retrato da pinça (post 001, fundo limpo).
+- Todas as fotos com moldura (passe-partout branco + filete dourado).

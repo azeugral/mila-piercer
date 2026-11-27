@@ -8,7 +8,7 @@
 window.NUVEMSHOP = {
   store: { id: 'demo', name: 'Mila Piercer', installments: 4 },
   // destaques do hero = produtos com a tag "destaque" na Nuvemshop, na ordem abaixo
-  featured: ['cluster-5-navetes', 'argola-conch-gold', 'max-cluster', 'umbigo-pendente-verde', 'lotus-14k', 'cluster-trinity-gota'],
+  featured: ['cluster-5-navetes', 'argola-conch-gold', 'umbigo-pendente-verde', 'cluster-4-navetes', 'lotus-14k', 'argola-turmalina', 'cluster-trinity-gota', 'borboleta-14k', 'cluster-13-zirconias', 'umbigo-navete', 'ponto-luz-3-garras-14k', 'cluster-bolinha'],
   categories: [
     { id: 'titanio', name: { pt: 'Titânio' } },
     { id: 'ouro', name: { pt: 'Ouro 14K' } },

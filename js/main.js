@@ -202,84 +202,48 @@
   });
   desenha();
 
-  /* ---------- hero: vitrine detalhada dos destaques ---------- */
-  var H = $('[data-h]'), hLista = $('[data-h-lista]'), hImg = $('[data-h-img]'), hImg2 = $('[data-h-img2]');
+  /* ---------- hero: vitrine enxuta, joias passando rápido ---------- */
+  var H = $('[data-h]'), hImg = $('[data-h-img]'), hImg2 = $('[data-h-img2]'), hPts = $('[data-h-pontos]');
   var DEST = NS.featured.map(function (h) { return NS.products.filter(function (p) { return p.handle.pt === h; })[0]; });
-  var hi = 0, hp = null, hv = null, hq = 1, auto = true, tAuto = null, CICLO = 5500;
-  function nomeCat(p) { return NS.categories.filter(function (c) { return c.id === p.categories[0]; })[0].name.pt; }
-  function attr(p) { return /K/.test(p.variants[0].values[0].pt) ? 'Ouro' : 'Cor'; }
+  var hi = 0, hp = null, tAuto = null, CICLO = 2400, pausa = false;
+  function hsrc(p) { return 'img/loja/h/' + p.handle.pt + '.webp'; }
+  $('[data-h-todas]').textContent = 'Ver todas as ' + NS.products.length + ' joias';
   DEST.forEach(function (p, i) {
-    var b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab');
-    b.innerHTML = '<span class="hl-n">' + p.name.pt + '</span><span class="hl-p">' + (estoque(p) ? brl(menor(p)) : 'Sem estoque') + '</span><i></i>';
-    b.addEventListener('click', function () { para(); mostraH(i); if (innerWidth <= 760) $('.h-foto').scrollIntoView({ behavior: 'smooth' }); });
-    hLista.appendChild(b);
-    p.images.forEach(function (im) { var pre = new Image(); pre.src = im.src; });
+    var b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-label', p.name.pt);
+    b.innerHTML = '<i></i>';
+    b.addEventListener('click', function () { mostraH(i); });
+    hPts.appendChild(b);
+    var pre = new Image(); pre.src = hsrc(p);
   });
   function foto(src, alt) {
-    if (hImg.getAttribute('src') === src) return;
     if (!hImg.getAttribute('src')) { hImg.src = src; hImg.alt = alt; return; }
     hImg2.src = hImg.src; hImg2.classList.remove('sai'); void hImg2.offsetWidth;
     hImg.src = src; hImg.alt = alt; hImg2.classList.add('sai');
   }
   function mostraH(i) {
     hi = (i + DEST.length) % DEST.length; hp = DEST[hi];
-    $$('button', hLista).forEach(function (b, j) { b.classList.toggle('on', j === hi); b.setAttribute('aria-selected', j === hi); });
-    $$('[data-v]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-v') === '0'); });
-    foto(hp.images[0].src, hp.name.pt);
-    $('[data-h-cat]').textContent = nomeCat(hp);
+    $$('button', hPts).forEach(function (b, j) { b.classList.toggle('on', j === hi); b.setAttribute('aria-selected', j === hi); });
+    foto(hsrc(hp), hp.name.pt);
+    $('[data-h-cat]').textContent = NS.categories.filter(function (c) { return c.id === hp.categories[0]; })[0].name.pt;
     $('[data-h-nome]').textContent = hp.name.pt;
-    var est = estoque(hp), selo = $('[data-h-selo]');
-    selo.hidden = est > 2; selo.textContent = est ? 'Últimas unidades' : 'Sem estoque'; selo.classList.toggle('selo-l', !!est);
-    var box = $('[data-h-var]'); box.innerHTML = '';
-    $('[data-h-attr]').textContent = hp.variants.length > 1 ? attr(hp) : '';
-    if (hp.variants.length > 1) hp.variants.forEach(function (v) {
-      var b = document.createElement('button'); b.type = 'button'; b.textContent = v.values[0].pt; b.disabled = !v.stock;
-      b.addEventListener('click', function () { para(); escolheH(v); });
-      box.appendChild(b); v._h = b;
-    });
-    var f = [['Material', hp.categories[0] === 'ouro' ? 'Ouro 14K com certificação Amagold' : 'Titânio ASTM F136'],
-      ['Indicada para', hp.uso], ['Garantia', 'Vitalícia do fabricante'], ['Entrega', 'Retirada no estúdio ou Nuvem Envio']];
-    $('[data-h-ficha]').innerHTML = f.map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('');
-    escolheH(hp.variants.filter(function (v) { return v.stock > 0; })[0] || hp.variants[0]);
-    H.classList.remove('troca', 'corre'); void H.offsetWidth; H.classList.add('troca', 'corre');
-    if (auto) ciclo();
+    var v = menor(hp), varios = hp.variants.some(function (x) { return +x.price !== v; });
+    $('[data-h-preco]').textContent = (varios ? 'a partir de ' : '') + brl(v);
+    $('[data-h-parc]').textContent = parc + 'x de ' + brl(v / parc) + ' sem juros ou Pix';
+    H.classList.remove('troca'); void H.offsetWidth; H.classList.add('troca');
+    ciclo();
   }
-  function escolheH(v) {
-    hv = v; hq = 1; $('[data-h-q]').textContent = 1;
-    hp.variants.forEach(function (x) { if (x._h) x._h.classList.toggle('on', x === v); });
-    $('[data-h-preco]').textContent = brl(v.price);
-    $('[data-h-parc]').textContent = parc + 'x de ' + brl(v.price / parc) + ' sem juros ou Pix';
-    var add = $('[data-h-add]'), av = $('[data-h-avise]'), est = $('[data-h-est]');
-    if (!v.stock) {
-      add.disabled = true; add.textContent = 'Sem estoque'; est.textContent = 'Esgotada no momento.';
-      av.hidden = false; av.href = wa('Oi, Mila! Quero ser avisada quando a joia ' + hp.name.pt + ' voltar ao estoque.');
-    } else {
-      add.disabled = false; add.textContent = 'Adicionar à sacola'; av.hidden = true;
-      est.textContent = /encomenda/.test(v.values[0].pt) ? 'Sob encomenda: prazo confirmado no pedido.' : (v.stock === 1 ? 'Última unidade em estoque.' : v.stock <= 2 ? 'Últimas ' + v.stock + ' unidades em estoque.' : v.stock + ' em estoque, pronta entrega.');
-    }
-  }
-  $$('[data-v]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      para(); var k = +b.getAttribute('data-v');
-      $$('[data-v]').forEach(function (x) { x.classList.toggle('on', x === b); });
-      foto(hp.images[k].src, hp.name.pt + (k ? ', detalhe' : ''));
-    });
+  function ciclo() { clearTimeout(tAuto); if (!pausa) tAuto = setTimeout(function () { mostraH(hi + 1); }, CICLO); }
+  $('[data-h-comprar]').addEventListener('click', function () { pausa = true; clearTimeout(tAuto); H.classList.add('pausa'); abreProd(hp); });
+  $$('.modal').forEach(function (m) {
+    new MutationObserver(function () { if (m.hidden && pausa && !H.matches(':hover')) { pausa = false; H.classList.remove('pausa'); ciclo(); } }).observe(m, { attributes: true, attributeFilter: ['hidden'] });
   });
-  $$('[data-hq]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      para(); var max = hv && !/encomenda/.test(hv.values[0].pt) ? hv.stock : 9;
-      hq = Math.max(1, Math.min(max || 1, hq + +b.getAttribute('data-hq'))); $('[data-h-q]').textContent = hq;
-    });
+  var foco = $('.h-foto', H), info = $('.h-info', H);
+  [foco, info].forEach(function (el) {
+    el.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { pausa = true; clearTimeout(tAuto); H.classList.add('pausa'); } });
+    el.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse' && $('[data-prod]').hidden) { pausa = false; H.classList.remove('pausa'); mostraH(hi); } });
   });
-  $('[data-h-add]').addEventListener('click', function () { para(); poe(hv.id, hq); abreSac(); });
-  function ciclo() { clearTimeout(tAuto); tAuto = setTimeout(function () { if (auto) mostraH(hi + 1); }, CICLO); }
-  function para() { if (!auto) return; auto = false; clearTimeout(tAuto); H.classList.add('parado'); }
-  H.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse' && auto) { clearTimeout(tAuto); H.classList.add('pausa'); } });
-  H.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse' && auto) { H.classList.remove('pausa', 'corre'); void H.offsetWidth; H.classList.add('corre'); ciclo(); } });
-  H.addEventListener('touchstart', para, { passive: true });
   if ('IntersectionObserver' in window) new IntersectionObserver(function (es) {
-    if (!es[0].isIntersecting) { clearTimeout(tAuto); H.classList.add('fora'); }
-    else if (H.classList.contains('fora')) { H.classList.remove('fora'); if (auto) ciclo(); }
+    if (!es[0].isIntersecting) clearTimeout(tAuto); else ciclo();
   }).observe(H);
   mostraH(0);
   requestAnimationFrame(function () { $('.hero').classList.add('on'); });
