@@ -111,7 +111,7 @@
     $('[data-p-preco]').textContent = brl(v.price);
     $('[data-p-parc]').textContent = parc + 'x de ' + brl(v.price / parc) + ' sem juros ou Pix';
     var add = $('[data-add]'), av = $('[data-avise]'), est = $('[data-p-est]');
-    add.href = NS.store.url ? NS.store.url + '/produtos/' + pp.handle.pt + '/?variant=' + v.id : '#';
+    add.href = pp.url ? pp.url.split('?')[0] + '?variant=' + v.id : (NS.store.url ? NS.store.url + '/produtos/' + pp.handle.pt + '/?variant=' + v.id : '#');
     if (!v.stock) {
       add.classList.add('off'); add.setAttribute('aria-disabled', 'true'); add.textContent = 'Sem estoque'; est.textContent = 'Esgotada no momento.';
       av.hidden = false; av.href = wa('Oi, Mila! Quero ser avisada quando a joia ' + pp.name.pt + ' voltar ao estoque.');
@@ -127,7 +127,7 @@
   /* comprar: abre a joia na loja da Nuvemshop (na prévia, sem loja ligada, mostra o aviso) */
   $('[data-add]').addEventListener('click', function (e) {
     if (this.classList.contains('off')) { e.preventDefault(); return; }
-    if (NS.store.url) return;
+    if (pp.url || NS.store.url) return;
     e.preventDefault();
     $('[data-ck-nome]').textContent = pp.name.pt + (pp.variants.length > 1 ? ' (' + pv.values[0].pt + ')' : '');
     md.hidden = true; $('[data-ck]').hidden = false;
@@ -135,9 +135,9 @@
 
   /* ---------- hero: vitrine enxuta, joias passando rápido ---------- */
   var H = $('[data-h]'), hImg = $('[data-h-img]'), hImg2 = $('[data-h-img2]'), hPts = $('[data-h-pontos]');
-  var DEST = NS.featured.map(function (h) { return NS.products.filter(function (p) { return p.handle.pt === h; })[0]; });
+  var DEST = NS.featured.map(function (h) { return NS.products.filter(function (p) { return p.handle.pt === h; })[0]; }).filter(Boolean);
   var hi = 0, hp = null, tAuto = null, CICLO = 2400, pausa = false;
-  function hsrc(p) { return 'img/loja/h/' + p.handle.pt + '.webp'; }
+  function hsrc(p) { var s = p.images[0] && p.images[0].src; return s && /^https?:/.test(s) ? s : 'img/loja/h/' + p.handle.pt + '.webp'; }
   $('[data-h-todas]').textContent = 'Ver todas as ' + NS.products.length + ' joias';
   DEST.forEach(function (p, i) {
     var b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-label', p.name.pt);

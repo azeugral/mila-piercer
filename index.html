@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-hub-loja="">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -282,6 +282,20 @@
 </div>
 
 <script src="js/loja.js"></script>
-<script src="js/main.js"></script>
+<script>
+/* Catálogo ao vivo pelo LRGZ Hub (Nuvemshop, só leitura). data-hub-loja vazio = usa a cópia fixa de js/loja.js.
+   Para testar outra loja: ?loja=<cliente>. Se o Hub não responder em 2,5 s, abre com a cópia fixa. */
+(function () {
+  var c = new URLSearchParams(location.search).get('loja') || document.documentElement.getAttribute('data-hub-loja'), ok = false;
+  function abre() { if (ok) return; ok = true; var s = document.createElement('script'); s.src = 'js/main.js'; document.body.appendChild(s); }
+  if (!c) return abre();
+  var t = setTimeout(abre, 2500);
+  fetch('https://hub.lrgz.com.br/v1/catalogo/' + encodeURIComponent(c))
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { if (d && d.products && d.products.length && !ok) window.NUVEMSHOP = d; })
+    .catch(function () {})
+    .then(function () { clearTimeout(t); abre(); });
+})();
+</script>
 </body>
 </html>
