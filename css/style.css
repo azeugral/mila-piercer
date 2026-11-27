@@ -433,3 +433,35 @@ p{text-wrap:pretty}
   .estudio .mapa iframe{height:340px}
 }
 @media (max-width:380px){.h-cab h1{font-size:24px}}
+
+/* ================= molduras: passe-partout branco + filete dourado ================= */
+:root{--mp:clamp(9px,.85vw,14px);--filete:rgba(140,113,64,.42);
+  --sombra:0 1px 2px rgba(30,29,32,.06),0 0 0 1px rgba(30,29,32,.05),0 26px 50px -30px rgba(30,29,32,.5)}
+.h-quadro,.prod-f,.peca,.p-foto,.hist-foto img,.lb img{background:var(--branco);padding:var(--mp);outline:1px solid var(--filete);outline-offset:calc(var(--mp) / -2);box-shadow:var(--sombra)}
+/* vitrine do topo */
+.h-foto{padding-top:clamp(18px,2vw,30px)}
+.h-quadro{--mp:clamp(12px,1.1vw,18px)}
+.h-quadro img{inset:var(--mp);width:calc(100% - var(--mp) * 2);height:calc(100% - var(--mp) * 2)}
+.h-quadro .selo{top:calc(var(--mp) + 12px);left:calc(var(--mp) + 12px)}
+/* cartões da loja e perfurações: sem zoom (vazaria a moldura), a moldura sobe */
+.prod-f,.peca{transition:transform .4s var(--e),box-shadow .4s var(--e)}
+.prod:hover .prod-f img,.peca:hover img{transform:none}
+.prod:hover .prod-f,.peca:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(30,29,32,.06),0 0 0 1px rgba(30,29,32,.05),0 34px 54px -28px rgba(30,29,32,.55)}
+.prod .selo{top:calc(var(--mp) + 8px);left:calc(var(--mp) + 8px)}
+.grade{gap:clamp(14px,1.4vw,22px)}
+/* produto aberto */
+.p-foto{margin:clamp(14px,2vw,28px);align-self:start}
+/* história */
+.hist-foto{background:transparent;padding:clamp(24px,3.2vw,56px)}
+.hist-foto img{--mp:clamp(12px,1.1vw,18px)}
+/* lightbox */
+.lb img{--mp:10px;outline-color:rgba(140,113,64,.55)}
+@media (max-width:760px){
+  :root{--mp:7px}
+  .h-quadro,.hist-foto img{--mp:10px}
+  .h-foto{padding:16px 18px 0}
+  .hist-foto{padding:18px}
+  .grade{gap:10px}
+  .p-foto{margin:12px 12px 0}
+  .prod .selo{top:calc(var(--mp) + 4px);left:calc(var(--mp) + 4px)}
+}
