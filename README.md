@@ -2,7 +2,7 @@
 
 Prévia em https://azeugral.github.io/mila-piercer/ (noindex). Feita a partir do Instagram @mila.piercerr em 27/11/2026.
 
-- **Hero (v2, 27/11):** vitrine detalhada da loja Nuvemshop. 6 joias em destaque (produtos com a tag "destaque") trocam sozinhas a cada 5,5 s até a pessoa mexer; cada uma com foto grande reescalada + close de detalhe, preço, parcelas, variação, estoque, quantidade, "Adicionar à sacola" e ficha (material, indicação, garantia, entrega). Ordem do site virou de vendas: hero-loja, todas as joias, perfurações, cuidados, sobre, dúvidas, agendar, estúdio.
+- **Hero (v2, 27/11):** vitrine detalhada da loja Nuvemshop. 6 joias em destaque (produtos com a tag "destaque") trocam sozinhas a cada 5,5 s até a pessoa mexer; cada uma com foto grande reescalada + close de detalhe, preço, parcelas, variação, estoque, quantidade, "Adicionar à sacola" e ficha (material, indicação, garantia, entrega). v3 (27/11): site em 100% da largura. Hero começa direto na vitrine (lista | foto de ponta a ponta | ficha de compra); logo depois a história dela com o agendamento na mesma seção (foto fixa à esquerda); depois todas as joias, perfurações, cuidados, dúvidas (2 colunas) e estúdio (mapa de ponta a ponta).
 - **Loja:** simulação de integração com a Nuvemshop. Os dados ficam em `js/loja.js`, no formato da API de produtos (variantes, estoque, preço). Tem vitrine com filtros, "Sem estoque" + "Avise-me" pelo WhatsApp, "Últimas unidades", variação prata/dourado e 14K/18K sob encomenda, sacola salva no navegador, frete por CEP (retirada no estúdio + Nuvem Envio) e um botão de checkout que explica o checkout da Nuvemshop.
 - **Formulário:** "Agendar perfuração" envia para wa.me/5519982014669.
 

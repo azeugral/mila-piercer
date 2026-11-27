@@ -67,10 +67,11 @@
   function vitrine() {
     vit.innerHTML = '';
     var ps = NS.products.filter(function (p) { return cat === 'todas' || p.categories.indexOf(cat) > -1; });
-    vmais.parentNode.hidden = todas || ps.length <= 8;
+    var lim = innerWidth >= 1400 ? 10 : 8;
+    vmais.parentNode.hidden = todas || ps.length <= lim;
     vmais.textContent = 'Ver todas as ' + ps.length + ' joias';
     ps.forEach(function (p, i) {
-      if (!todas && i >= 8) return;
+      if (!todas && i >= lim) return;
       var est = estoque(p), v = menor(p), varios = p.variants.length > 1 && p.variants.some(function (x) { return +x.price !== v; });
       var a = document.createElement('button'); a.type = 'button'; a.className = 'prod rev' + (est ? '' : ' esgotado');
       var selo = !est ? '<span class="selo">Sem estoque</span>' : (est <= 2 ? '<span class="selo selo-l">Últimas unidades</span>' : '');
@@ -210,7 +211,7 @@
   DEST.forEach(function (p, i) {
     var b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab');
     b.innerHTML = '<span class="hl-n">' + p.name.pt + '</span><span class="hl-p">' + (estoque(p) ? brl(menor(p)) : 'Sem estoque') + '</span><i></i>';
-    b.addEventListener('click', function () { para(); mostraH(i); });
+    b.addEventListener('click', function () { para(); mostraH(i); if (innerWidth <= 760) $('.h-foto').scrollIntoView({ behavior: 'smooth' }); });
     hLista.appendChild(b);
     p.images.forEach(function (im) { var pre = new Image(); pre.src = im.src; });
   });

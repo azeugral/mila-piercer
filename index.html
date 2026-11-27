@@ -24,8 +24,8 @@
   <nav class="nav-in" aria-label="Principal">
     <div class="nav-l">
       <a href="#joias">Joias</a>
-      <a href="#perfuracoes">Perfurações</a>
       <a href="#sobre">Sobre</a>
+      <a href="#perfuracoes">Perfurações</a>
     </div>
     <a class="marca" href="#inicio" aria-label="Mila, início">Mila</a>
     <div class="nav-r">
@@ -40,12 +40,15 @@
 
 <!-- HERO: vitrine detalhada dos destaques (Nuvemshop) -->
 <section class="hero" id="inicio">
-  <div class="h-cab">
-    <h1><span class="sr">Mila, body piercer em Piracicaba: </span>Joias em titânio e ouro para o seu piercing</h1>
-    <p class="sync"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8a6 6 0 0 1 10.2-4.2M14 8a6 6 0 0 1-10.2 4.2M12.5 1.5v2.8H9.7M3.5 14.5v-2.8h2.8"/></svg> Loja da Mila na Nuvemshop: estoque em tempo real</p>
-  </div>
   <div class="h-grid" data-h>
-    <div class="h-lista" role="tablist" aria-label="Joias em destaque" data-h-lista></div>
+    <div class="h-esq">
+      <div class="h-cab">
+        <h1><span class="sr">Mila, body piercer em Piracicaba: </span>Joias em titânio e ouro para o seu piercing</h1>
+        <p class="sync"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8a6 6 0 0 1 10.2-4.2M14 8a6 6 0 0 1-10.2 4.2M12.5 1.5v2.8H9.7M3.5 14.5v-2.8h2.8"/></svg> Loja da Mila na Nuvemshop: estoque em tempo real</p>
+      </div>
+      <div class="h-lista" role="tablist" aria-label="Joias em destaque" data-h-lista></div>
+      <a class="h-todas" href="#joias" data-h-todas>Ver todas as joias</a>
+    </div>
     <div class="h-foto">
       <figure class="h-quadro" data-h-quadro>
         <img alt="" width="1080" height="1350" draggable="false" data-h-img>
@@ -71,6 +74,68 @@
       </div>
       <a class="p-avise" hidden data-h-avise target="_blank" rel="noopener">Avise-me quando voltar</a>
       <dl class="ficha" data-h-ficha></dl>
+    </div>
+  </div>
+</section>
+
+<!-- HISTÓRIA + AGENDAR -->
+<section class="hist" id="sobre">
+  <figure class="hist-foto"><img src="img/sobre.webp" alt="Mila sentada no estúdio, de blazer cinza" width="960" height="1200"></figure>
+  <div class="hist-txt">
+    <img class="orn orn-hist" src="img/orn/navetes.webp" alt="" aria-hidden="true">
+    <div class="sobre-txt rev">
+      <h2>A única constante é a mudança</h2>
+      <p>Oi, eu sou a Mila. Sou body piercer desde 2021 e, desde que escolhi essa profissão, me dedico a estudar, evoluir e oferecer uma experiência segura, acolhedora e personalizada para cada pessoa que passa pelo meu estúdio.</p>
+      <p>Se adornar vai muito além de colocar uma joia: é marcar fases, expressar personalidade, resgatar autoestima e celebrar transformações. Fazer parte desses momentos é o que eu mais amo no meu trabalho.</p>
+      <ul class="fatos">
+        <li><b>Desde 2021</b> perfurando, com estúdio próprio em Piracicaba</li>
+        <li><b>Titânio ASTM F136</b> e ouro 14K e 18K com certificação Amagold</li>
+        <li><b>Formação contínua</b>: 5ª Conferência APPBR e 6º Meeting de piercers</li>
+        <li><b>Horário marcado</b>: atendimento só com agendamento</li>
+      </ul>
+    </div>
+    <div class="ag" id="agendar">
+    <div class="cab ag-cab rev">
+      <h2>Agendar perfuração</h2>
+      <p class="lead">Atendimento com horário marcado. Conte o que você quer fazer e a mensagem chega pronta no meu WhatsApp.</p>
+    </div>
+    <ol class="passos rev">
+      <li><h3>Escolha</h3><p>A perfuração ou o projeto que você quer.</p></li>
+      <li><h3>Mensagem</h3><p>O formulário monta tudo para o WhatsApp.</p></li>
+      <li><h3>Avaliação</h3><p>Olho a sua anatomia e indico a joia.</p></li>
+      <li><h3>Perfuração</h3><p>Estéril, com retorno para o downsize.</p></li>
+    </ol>
+    <form id="form" class="form rev" novalidate>
+      <label class="campo"><span>Seu nome</span><input name="nome" type="text" autocomplete="name" placeholder="Como posso te chamar?"></label>
+      <p class="erro" hidden>Escreva o seu nome para eu saber com quem falo.</p>
+      <fieldset class="campo"><legend>Onde?</legend>
+        <div class="chips">
+          <label><input type="radio" name="local" value="Orelha"><span>Orelha</span></label>
+          <label><input type="radio" name="local" value="Projeto de orelha"><span>Projeto de orelha</span></label>
+          <label><input type="radio" name="local" value="Nariz"><span>Nariz</span></label>
+          <label><input type="radio" name="local" value="Umbigo"><span>Umbigo</span></label>
+          <label><input type="radio" name="local" value="Microdermal ou surface"><span>Microdermal ou surface</span></label>
+          <label><input type="radio" name="local" value="Ainda não sei"><span>Ainda não sei</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="campo"><legend>É perfuração nova?</legend>
+        <div class="chips chips-1">
+          <label><input type="radio" name="tipo" value="Perfuração nova"><span>Perfuração nova</span></label>
+          <label><input type="radio" name="tipo" value="Troca de joia ou downsize"><span>Troca de joia ou downsize</span></label>
+          <label><input type="radio" name="tipo" value="Avaliar furo antigo"><span>Avaliar furo antigo</span></label>
+        </div>
+      </fieldset>
+      <div class="duas">
+        <label class="campo"><span>Joia</span>
+          <select name="joia"><option value="">Escolher</option><option>Titânio ASTM F136</option><option>Ouro 14K ou 18K</option><option>Quero ajuda para escolher</option></select>
+        </label>
+        <label class="campo"><span>Melhor período</span>
+          <select name="per"><option value="">Escolher</option><option>Manhã</option><option>Tarde</option><option>Noite</option><option>Sábado</option></select>
+        </label>
+      </div>
+      <label class="campo"><span>Conte a sua ideia</span><textarea name="ideia" rows="3" placeholder="Ex.: quero um conch com argola cravejada"></textarea></label>
+      <button class="btn" type="submit">Enviar pelo WhatsApp</button>
+    </form>
     </div>
   </div>
 </section>
@@ -139,26 +204,6 @@
   </div>
 </section>
 
-<!-- SOBRE -->
-<section class="sec sobre" id="sobre">
-  <img class="orn orn-hl" src="img/orn/navetes.webp" alt="" aria-hidden="true">
-  <img class="orn orn-hr" src="img/orn/navetes.webp" alt="" aria-hidden="true">
-  <div class="sobre-in">
-    <figure class="sobre-foto rev"><img src="img/sobre.webp" alt="Mila sentada no estúdio, de blazer cinza" width="960" height="1200"></figure>
-    <div class="sobre-txt rev">
-      <h2>A única constante é a mudança</h2>
-      <p>Oi, eu sou a Mila. Sou body piercer desde 2021 e, desde que escolhi essa profissão, me dedico a estudar, evoluir e oferecer uma experiência segura, acolhedora e personalizada para cada pessoa que passa pelo meu estúdio.</p>
-      <p>Se adornar vai muito além de colocar uma joia: é marcar fases, expressar personalidade, resgatar autoestima e celebrar transformações. Fazer parte desses momentos é o que eu mais amo no meu trabalho.</p>
-      <ul class="fatos">
-        <li><b>Desde 2021</b> perfurando, com estúdio próprio em Piracicaba</li>
-        <li><b>Titânio ASTM F136</b> e ouro 14K e 18K com certificação Amagold</li>
-        <li><b>Formação contínua</b>: 5ª Conferência APPBR e 6º Meeting de piercers</li>
-        <li><b>Horário marcado</b>: atendimento só com agendamento</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <!-- DÚVIDAS -->
 <section class="sec duvidas" id="duvidas">
   <img class="orn orn-hl" src="img/orn/arco.webp" alt="" aria-hidden="true">
@@ -173,53 +218,6 @@
     <details><summary>Posso ir à praia com piercing novo?</summary><p>No período de cicatrização, não é indicado: areia, maresia, sol e água do mar prejudicam o furo. Por isso o inverno é a melhor época para colocar um piercing novo.</p></details>
     <details><summary>Meu furo fechou. Preciso furar de novo?</summary><p>Nem todo piercing "fechado" realmente fechou. Às vezes o canal está só obstruído e dá para desobstruir com o instrumento certo, sem nova perfuração. Por isso a avaliação faz toda a diferença.</p></details>
   </div>
-</section>
-
-<!-- AGENDAR -->
-<section class="sec marcar" id="agendar">
-  <img class="orn orn-bl" src="img/orn/navetes.webp" alt="" aria-hidden="true">
-  <img class="orn orn-br" src="img/orn/navetes.webp" alt="" aria-hidden="true">
-  <div class="cab rev">
-    <h2>Agendar perfuração</h2>
-    <p class="lead">Atendimento com horário marcado. Conte o que você quer fazer e a mensagem chega pronta no meu WhatsApp.</p>
-  </div>
-  <ol class="passos rev">
-    <li><h3>Escolha</h3><p>A perfuração ou o projeto que você quer.</p></li>
-    <li><h3>Mensagem</h3><p>O formulário monta tudo para o WhatsApp.</p></li>
-    <li><h3>Avaliação</h3><p>Olho a sua anatomia e indico a joia.</p></li>
-    <li><h3>Perfuração</h3><p>Estéril, com retorno para o downsize.</p></li>
-  </ol>
-  <form id="form" class="form rev" novalidate>
-    <label class="campo"><span>Seu nome</span><input name="nome" type="text" autocomplete="name" placeholder="Como posso te chamar?"></label>
-    <p class="erro" hidden>Escreva o seu nome para eu saber com quem falo.</p>
-    <fieldset class="campo"><legend>Onde?</legend>
-      <div class="chips">
-        <label><input type="radio" name="local" value="Orelha"><span>Orelha</span></label>
-        <label><input type="radio" name="local" value="Projeto de orelha"><span>Projeto de orelha</span></label>
-        <label><input type="radio" name="local" value="Nariz"><span>Nariz</span></label>
-        <label><input type="radio" name="local" value="Umbigo"><span>Umbigo</span></label>
-        <label><input type="radio" name="local" value="Microdermal ou surface"><span>Microdermal ou surface</span></label>
-        <label><input type="radio" name="local" value="Ainda não sei"><span>Ainda não sei</span></label>
-      </div>
-    </fieldset>
-    <fieldset class="campo"><legend>É perfuração nova?</legend>
-      <div class="chips chips-1">
-        <label><input type="radio" name="tipo" value="Perfuração nova"><span>Perfuração nova</span></label>
-        <label><input type="radio" name="tipo" value="Troca de joia ou downsize"><span>Troca de joia ou downsize</span></label>
-        <label><input type="radio" name="tipo" value="Avaliar furo antigo"><span>Avaliar furo antigo</span></label>
-      </div>
-    </fieldset>
-    <div class="duas">
-      <label class="campo"><span>Joia</span>
-        <select name="joia"><option value="">Escolher</option><option>Titânio ASTM F136</option><option>Ouro 14K ou 18K</option><option>Quero ajuda para escolher</option></select>
-      </label>
-      <label class="campo"><span>Melhor período</span>
-        <select name="per"><option value="">Escolher</option><option>Manhã</option><option>Tarde</option><option>Noite</option><option>Sábado</option></select>
-      </label>
-    </div>
-    <label class="campo"><span>Conte a sua ideia</span><textarea name="ideia" rows="3" placeholder="Ex.: quero um conch com argola cravejada"></textarea></label>
-    <button class="btn" type="submit">Enviar pelo WhatsApp</button>
-  </form>
 </section>
 
 <!-- ESTÚDIO -->
